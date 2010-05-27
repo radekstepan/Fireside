@@ -1,0 +1,16 @@
+<?php if (!defined('FARI')) die(); ?>
+
+<div id="content">
+    <form class="form" method="POST" action="<?php url('/auth/login/'); ?>">
+        <div class="field">
+            <label>Username</label>
+            <input class="text" name="username" type="text" />
+        </div>
+        <div class="field">
+            <label>Password</label>
+            <input class="text" name="password" type="password" />
+        </div>
+        <input type="hidden" name="token" value="<?php echo $token; ?>" />
+        <input type="submit" class="button" value="Sign in" />
+    </form>
+</div>

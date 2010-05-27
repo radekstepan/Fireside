@@ -1,0 +1,76 @@
+<?php if (!defined('FARI')) die(); ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Language" content="en" />
+    <title>Fireside: <?php echo $topic['name']; ?></title>
+
+    <?php stylesheetLinkTag('tripoli'); ?>
+    <?php stylesheetLinkTag($userRow['layout']); ?>
+
+    <?php javascriptIncludeTag('prototype'); ?>
+    <?php javascriptIncludeTag('scriptaculous/scriptaculous'); ?>
+    <?php javascriptIncludeTag('fireside'); ?>
+    <script type="text/javascript">
+    Event.observe(window, 'load', function() {
+        // resizing textarea
+        $$('textarea').each(function(textarea) {
+            new Widget.Textarea(textarea);
+        });
+        // more truncation
+        $$('.gray').each(function(e, i) {
+            substrText(e, i);
+        });
+        // ping
+        new Ajax.PeriodicalUpdater('ping', '<?php url('versions/ping') ?>', {
+            method: 'get', frequency: 30
+        });
+    });
+    </script>
+
+    <?php atomTag('feed'); ?>
+    <?php faviconTag(); ?>
+</head>
+<body>
+    <div id="body">
+        <div id="sidebar">
+            <div id="user">
+                <?php
+                linkTo('/settings', $userRow['name']);
+                linkTo('auth/logout', 'Sign out');
+              ?>
+            </div>
+            <div id="text">
+                <h3>Help</h3>
+                <p>Click any dark text to reply to it. Each line break represents a new node. Once you are done
+                    with all replies, just hit 'Reply'.</p>
+                <h3>&larr; Previous Message</h3>
+                <p>Previous message this message is a reply to.</p>
+                <h3>Next unread message &rarr;</h3>
+                <p>Oldest unread message in the current topic.</p>
+            </div>
+        </div>
+        
+        <div id="wrapper">
+            <div id="main">
+                <div id="header">
+                    <h1>
+                        <?php linkTo('/', 'Fireside'); ?><br />
+                        <?php linkTo("/topics/show/{$topic['id']}", '<span>' . $topic['name'] . '</span>'); ?>
+                    </h1>
+                    <p>Share what's new in your life.</p>
+                </div>
+                <div id="search">
+                    <?php linkTo('/topics/new', 'Create a new topic'); ?>
+                    <form action="<?php url('search'); ?>">
+                        <input type="text" class="text" name="q" id="q"/>
+                        <input type="submit" class="button" value="Search" />
+                    </form>
+                </div>
+                <?php echo $template; ?>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

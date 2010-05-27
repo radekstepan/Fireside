@@ -1,0 +1,99 @@
+*{font-size:1em;margin:0;outline:none;padding:0;text-decoration:none;}
+code,kbd,samp,pre,tt,var,input,select,isindex,listing,xmp,plaintext{font:inherit;white-space:normal;}
+textarea{font:inherit;}
+a,img,a img,iframe,form,abbr,acronym,object,applet,table,a abbr,a acronym{border-width:0;}
+dfn,i,cite,var,address,em{font-style:normal;}
+th,b,strong,h1,h2,h3,h4,h5,h6,dt{font-weight:400;}
+caption,th,td{text-align:left;}
+html{background:#FFF;color:#000;font-family:sans-serif;font-size:125%;line-height:1;}
+q{quotes:\201C\201D\2018\2019;}
+ul,ol,dir,menu{list-style:none;}
+sub,sup{vertical-align:baseline;}
+a{color:inherit;text-decoration:underline;}
+font,basefont{color:inherit;font:inherit;font-size:100%;}
+center,[align]{text-align:inherit;}
+s,strike,u{text-decoration:inherit;}
+img{border:none;margin:0;}
+ol{list-style-type:decimal;}
+body{background-color:transparent;font-size:50%;}
+tr,th,td{background-color:transparent;border:none;height:auto;vertical-align:inherit;width:auto;}
+table[border],.content table[border]{border-collapse:separate;border-spacing:0;}
+nobr{white-space:normal;}
+marquee{-moz-binding:none;overflow:visible;}
+blink{text-decoration:none;}
+strong,th,thead td,h1,h2,h3,h4,h5,h6,dt{font-weight:700;}
+cite,em,dfn{font-style:italic;}
+code,kbd,samp,pre,tt,var,input[type='text'],input[type='password'],textarea{font-family:mono-space,monospace;font-size:100%;}
+pre{white-space:pre;}
+pre *{font-size:100%;white-space:pre;}
+del{text-decoration:line-through;}
+ins,dfn{border-bottom:1px solid #000;}
+small,sup,sub{font-size:85%;}
+big{font-size:125%;line-height:80%;}
+abbr,acronym{font-size:85%;letter-spacing:.1em;text-transform:uppercase;}
+abbr[title],acronym[title],dfn[title]{border-bottom:1px dotted #000;cursor:help;}
+sup{vertical-align:super;}
+sub{vertical-align:sub;}
+blockquote{padding-left:2.2em;}
+:lang(af),:lang(nl),:lang(pl){quotes:\201E \201D \201A \2019;}
+:lang(bg),:lang(cs),:lang(de),:lang(is),:lang(lt),:lang(sk),:lang(sr),:lang(ro){quotes:\201E \201C \201A \2018;}
+:lang(da),:lang(hr){quotes:\00BB \00AB \203A \2039;}
+:lang(el),:lang(es),:lang(sq),:lang(tr){quotes:\00AB \00BB \2039 \203A;}
+:lang(en-GB){quotes:\2018 \2019 \201C \201D;}
+:lang(fi),:lang(sv){quotes:\201D \201D \2019 \2019;}
+:lang(fr){quotes:\ab\2005 \2005\bb \2039\2005 \2005\203a;}
+[lang|='en'] q:before{content:'\201C';}
+[lang|='en'] q:after{content:'\201D';}
+[lang|='en'] q q:before{content:'\2018';}
+[lang|='en'] q q:after{content:'\2019';}
+input,select,button{cursor:pointer;}
+input[type='text'],input[type='password']{cursor:text;}
+.content{font-size:1.2em;line-height:1.6em;}
+.content h1{font-size:1.6em;line-height:1;margin:1em 0 .5em;}
+.content h2{font-size:1.5em;line-height:1;margin:1.07em 0 .535em;}
+.content h3{font-size:1.4em;line-height:1;margin:1.14em 0 .57em;}
+.content h4{font-size:1.3em;line-height:1;margin:1.23em 0 .615em;}
+.content h5{font-size:1.2em;line-height:1;margin:1.33em 0 .67em;}
+.content h6{font-size:1em;line-height:1;margin:1.6em 0 .8em;}
+.content hr{background:#000;border:none;color:#000;display:block;height:1px;width:100%;}
+.content ul{list-style:disc outside;}
+.content ol{list-style:decimal outside;}
+.content table{border-collapse:collapse;}
+.content hr,.content p,.content ul,.content ol,.content dl,.content pre,.content address,.content table,.content form{margin-bottom:1.6em;}
+.content p+p{margin-top:-.8em;}
+.content fieldset{margin:1.6em 0;padding:1.6em;}
+.content legend{padding-left:.8em;padding-right:.8em;}
+.content fieldset>:first-child{margin-top:0;}
+.content textarea,.content input[type='text']{padding:.1em .2em;}
+.content input{padding:.2em .1em;}
+.content select{padding:.2em .1em 0;}
+.content select[multiple]{margin-bottom:.8em;}
+.content option{padding:0 .4em .1em;}
+.content button{padding:.3em .5em;}
+.content input[type='radio']{bottom:-.2em;position:relative;}
+.content dt{margin-bottom:.4em;margin-top:.8em;}
+.content ul,.content ol{margin-left:2.2em;}
+.content caption,.content form div{padding-bottom:.8em;}
+.content ul ul,content ol ul,.content ul ol,content ol ol{margin-bottom:0;}
+hr,input[type='hidden']{display:none;}
+@media all and min-width 0px {
+.content legend{margin-bottom:1.6em;}
+.content fieldset{margin-top:0;}
+.content[class^='content'] fieldset{margin-top:1.6em;}
+}
+
+blockquote > :first-child:before /* Tripoli bonus: pure CSS blockquote */{color:#aaa;content:"\201C";font-family:georgia,serif;font-size:2.5em;line-height:0;margin-left:-.62em;padding-right:.2em;}
+abbr[title],acronym[title],dfn[title]{border-bottom:1px solid #ccc;}
+ins,dfn{border-bottom-color:#666;}
+fieldset{border:1px solid #ccc;border-color:#ccc;}
+textarea,input[type='text'],input[type='password'],select{background:#fff;border:1px solid #ccc;}
+textarea:hover,input[type='text']:hover,input[type='password']:hover,select:hover{border-color:#aaa;}
+textarea:focus,input[type='text']:focus,input[type='password']:focus,select:focus{border-color:#888;outline:2px solid #e4e4e4;}
+.content hr{background:#aaa;color:#aaa;}
+.content table{border-left:1px solid #ccc;border-top:1px solid #ccc;}
+.content th,.content td{border-bottom:1px solid #ddd;border-right:1px solid #ccc;padding:.8em;}
+a:link{color:#36c;}
+a:visited{color:#99c;}
+a:hover,code,pre{color:#c33;}
+a:active,.a:focus{color:#000;}
+blockquote,del{color:#666;}

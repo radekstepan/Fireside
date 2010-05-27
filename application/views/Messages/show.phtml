@@ -1,0 +1,54 @@
+<?php if (!defined('FARI')) die();
+
+foreach (flash() as $flash) {
+    echo "<div id='flash' class='{$flash['key']}'><h2>{$flash['text']}</h2></div>";
+}
+
+if (!empty($message['child_id'])) {
+    echo '<div id="gray">';
+    if (!empty($previousMessage['id'])) {
+        echo '<h2>';
+        echo "Viewing an older message ";
+        echo (strlen($message['name']) > 15) ? '"'.substr($message['name'], 0, 15).'..."' : '"'.$message['name'].'"';
+        newerMessage($newerMessage);
+        linkTo("/messages/show/{$message['topics_id']}/{$previousMessage['id']}", '&larr; Previous message');
+        echo '</h2>';
+    } else {
+        echo '<h2>You are viewing the original message';
+        newerMessage($newerMessage);
+        echo '</h2>';
+    }
+    echo '</div>';
+} else {
+    if (!empty($newerMessage)) {
+        echo '<div id="gray"><h2>There is more for you to read...';
+        newerMessage($newerMessage);
+        echo '</h2></div>';
+    }
+}
+
+function newerMessage(array &$message) {
+    if (!empty($message)) {
+        linkTo("/messages/show/{$message['topics_id']}/{$message['id']}", 'Next unread message &rarr;');
+    }
+}
+?>
+
+<div id="content">
+    <?php if ((empty($message['child_id'])) && (!empty($previousMessage['id']))): ?>
+        <div class="blue"><?php if (!empty($previousMessage['id']))
+        linkTo("/messages/show/{$message['topics_id']}/{$previousMessage['id']}", '&larr; Previous message'); ?></div>
+    <?php endif; ?>
+    
+    <form class="form" method="POST" action="<?php url("/messages/create/{$message['topics_id']}/{$message['id']}"); ?>">
+        <?php renderPartial('nodes'); ?>
+        <div style="clear:both;"></div>
+        <?php if ($topic['is_archived'] != '1'): ?>
+            <br /><div class="node">
+                <p><a href="#" onclick="reply('new');return false;" class="orange">Add a new message?</a></p>
+                <textarea style='display:none;' id='new' name='0'></textarea>
+            </div>
+            <br /><input type="submit" class="button" style="font-weight:bold;" value="Reply" />
+        <?php endif; ?>
+    </form>
+</div>

@@ -1,0 +1,12 @@
+<FilesMatch ".sqlite$">
+Deny from all
+</FilesMatch>
+<FilesMatch ".sql$">
+Deny from all
+</FilesMatch>
+<FilesMatch ".db$">
+Deny from all
+</FilesMatch>
+<FilesMatch ".php$">
+Deny from all
+</FilesMatch>

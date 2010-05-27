@@ -1,0 +1,22 @@
+<?php if (!defined('FARI')) die(); ?>
+
+<div id="gray">
+    <h2>Messages matching “<?php echo $q; ?>”<?php linkTo("/", '&larr; Back to all topics'); ?></h2>
+</div>
+<div id="content" class="search">
+    <?php if (!empty($nodes)): foreach ($nodes as $node): ?>
+        <div class="node">
+            <div class="user"><?php imageTag('images/avatar_' . strtolower($node['user']) . '.jpg'); ?></div>
+            <div class='text'>
+                <p class='reply'>
+                    <?php
+                    $text = (!empty($q)) ? highlight($node['text'], $q, FALSE) : $node['text'];
+                    linkTo("/messages/show/{$node['topics_id']}/{$node['messages_id']}", $text);
+                    ?>
+                </p>
+            </div>
+        </div>
+    <?php endforeach; else: ?>
+        <p class="dark">Sorry, I couldn't find any messages that match your search.</p>
+    <?php endif; ?>
+</div>

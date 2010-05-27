@@ -1,0 +1,44 @@
+<?php if (!defined('FARI')) die();
+
+for ($i=0; $i<$count; $i++) {
+    // print from the current message
+    if ($nodes[$i]['messages_id'] == $message['id']) {
+        echo '<div class="node">';
+        // print my parent, if I have one (first message in a topic doesn't)
+        $parent = parentId($nodes[$i]['id'], $count, $nodes);
+        if (is_int($parent) && !in_array($parent, $printedDaddies)) {
+            // wrap and output user
+            echo '<div class="user"><img src="' . url('public/images/avatar_'. strtolower($nodes[$parent]['user']) .'.jpg', FALSE) . '" /></div>';
+            // now the message
+            echo "<p class='gray'>" . $nodes[$parent]['text'] . "</p>\n";
+            $printedDaddies[] = $parent;
+        }
+        if (!in_array($parent, $printedCurrent)) {
+            // print my avatar
+            echo '<div class="user"><img src="' . url('public/images/avatar_'.strtolower($nodes[$i]['user']).'.jpg', FALSE) . '" /></div>';
+            $printedCurrent[] = $parent;
+            // print me
+            echo "<div class='text'><p onclick=\"reply('{$nodes[$i]['id']}');return false;\" class='reply'>" . $nodes[$i]['text'] . "</p>\n";
+            // a child becomes a parent
+            echo "<textarea style='display:none;' id='{$nodes[$i]['id']}' name='{$nodes[$i]['id']}'></textarea></div>\n";
+            echo '</div>';
+        } else {
+            // print me
+            echo "<div class='text'><p onclick=\"reply('{$nodes[$i]['id']}');return false;\" class='reply'>" . $nodes[$i]['text'] . "</p>\n";
+            // a child becomes a parent
+            echo "<textarea style='display:none;' id='{$nodes[$i]['id']}' name='{$nodes[$i]['id']}'></textarea></div>\n";
+            echo '</div>';
+        }
+    }
+}
+
+function parentId($childId, $count, &$nodes) {
+    for ($i=0; $i<$count; $i++) {
+        // do you have children?
+        if (!empty($nodes[$i]['child_id'])) {
+            $children = explode(",", $nodes[$i]['child_id']);
+            // whose your daddy
+            if (in_array($childId, $children)) return $i;
+        }
+    }
+}

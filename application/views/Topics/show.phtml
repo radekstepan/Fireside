@@ -1,0 +1,15 @@
+<?php if (!defined('FARI')) die(); ?>
+
+<?php if ($topic['is_archived']): ?>
+    <div id="gray">
+        <h2>This topic has been archived <?php linkTo("/", '&larr; Back to all topics'); ?></h2>
+    </div>
+    <div id="content">
+        <?php renderPartial('topic'); ?>
+    </div>
+<?php else: ?>
+    <div id="content">
+        <div class="blue"><?php linkTo("/", '&larr; Back to all topics'); ?></div>
+        <?php renderPartial('topic'); ?>
+    </div>
+<?php endif; ?>

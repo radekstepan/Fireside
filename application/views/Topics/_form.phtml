@@ -1,0 +1,14 @@
+<?php if (!defined('FARI')) die(); ?>
+
+<form class="new" method="POST" action="<?php url("/topics/create/"); ?>">
+    <div class="field">
+        <label>Topic name</label>
+        <input type="text" name="name" class="text" />
+    </div>
+    <div class="field">
+        <label>Message text</label>
+        <textarea id='0' name='0'></textarea>
+        <div id="scroll-0"></div>
+    </div>
+    <input type="submit" class="button" style="font-weight:bold;" value="Create" />
+</form>

@@ -1,0 +1,15 @@
+<?php if (!defined('FARI')) die(); ?>
+
+<?php foreach ($messages as $message): extract($message); ?>
+<div class="topic<?php if (!isset($first)): echo " first"; $first=FALSE; endif; ?>">
+    <h4><?php linkTo("messages/show/{$topic['id']}/{$id}", $name); badge($read_by, $userRow['id']); ?></h4>
+    <p>Written by <?php echo $user; ?> on <?php echo $created_at; ?></p>
+</div>
+<?php
+endforeach;
+
+function badge($messageReadBy, $userId) {
+    if (strpos($messageReadBy, "!{$userId}!") === FALSE) {
+        echo ' <img src="' . url('public/images/badge_unread_pink.png', FALSE) . '" />';
+    }
+}

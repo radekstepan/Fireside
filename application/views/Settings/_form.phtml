@@ -1,0 +1,25 @@
+<?php if (!defined('FARI')) die(); ?>
+
+<form class="new" method="POST" action="<?php url("/settings/update/"); ?>">
+    <div class="field">
+        <label>Layout used</label>
+        <select name="layout" class="select">
+            <?php foreach ($stylesheets as $style): ?>
+                <?php if ($userRow['layout'] == $style): ?>
+                    <option selected value="<?php echo $style ?>"><?php echo $style ?></option>
+                <?php else: ?>
+                    <option value="<?php echo $style ?>"><?php echo $style ?></option>
+                <?php endif; ?>
+            <?php endforeach; ?>
+        </select>
+    </div>
+    <div class="field">
+        <label>New password</label>
+        <input type="password" class="text" name="password1" />
+    </div>
+    <div class="field">
+        <label>Repeat password</label>
+        <input type="password" class="text" name="password2" />
+    </div>
+    <input type="submit" class="button" style="font-weight:bold;" value="Save" />
+</form>

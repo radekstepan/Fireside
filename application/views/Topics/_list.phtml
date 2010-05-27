@@ -1,0 +1,31 @@
+<?php if (!defined('FARI')) die(); ?>
+
+<?php if (!empty($topics)): ?>
+
+<?php foreach ($topics as $topic): extract($topic); ?>
+<div class="topic<?php if (!isset($first)): echo " first"; $first=FALSE; endif; ?>">
+    
+    <?php if (!empty($unread) && in_array($id, $unread)): ?>
+        <h4><?php linkTo("messages/show/{$id}/unread", $name);
+            echo ' <img src="' . url('public/images/badge_unread_pink.png', FALSE) . '" />'; ?>
+        </h4>
+    <?php else: ?>
+        <h4><?php
+            linkTo("topics/show/{$id}", $name);
+            $confirm = 'return confirm(\'Do you wish to archive this topic?\')';
+            echo '<a onclick="'.$confirm.'" href="'. url("topics/delete/{$id}", FALSE) . '"';
+            imageTag('images/remove.png');
+            echo '</a>';
+            ?>
+        </h4>
+    <?php endif; ?>
+
+    <p>Written by <?php echo $created_by; ?> on
+    <?php echo $created_at; ?><?php if (!empty($updated_by)): ?>, updated by <?php echo $updated_by; ?> on
+    <?php echo $updated_at; ?></p><?php endif; ?>
+</div>
+<?php endforeach; ?>
+
+<?php else: ?>
+    <p class="dark">There are no topics yet.</p>
+<?php endif; ?>

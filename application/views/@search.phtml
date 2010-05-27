@@ -1,0 +1,47 @@
+<?php if (!defined('FARI')) die(); ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Language" content="en" />
+    <title>Fireside</title>
+
+    <?php stylesheetLinkTag('tripoli'); ?>
+    <?php stylesheetLinkTag($userRow['layout']); ?>
+
+    <?php atomTag('feed'); ?>
+    <?php faviconTag(); ?>
+</head>
+<body>
+    <div id="body">
+        <div id="sidebar">
+            <div id="user">
+                <?php
+                linkTo('/settings', $userRow['name']);
+                linkTo('auth/logout', 'Sign out');
+              ?>
+            </div>
+            <div id="text">
+                <h3>Search results</h3>
+                <p>Click on any of the text to view the whole message in context.</p>
+            </div>
+        </div>
+        <div id="wrapper">
+            <div id="main">
+                <div id="header">
+                    <h1><?php linkTo('/', 'Fireside'); ?></h1>
+                    <p>Share what's new in your life.</p>
+                </div>
+                <div id="search">
+                    <?php linkTo('/topics/new', 'Create a new topic'); ?>
+                    <form action="<?php url('search'); ?>">
+                        <input type="text" class="text" name="q" id="q"/>
+                        <input type="submit" class="button" value="Search" />
+                    </form>
+                </div>
+                <?php echo $template; ?>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

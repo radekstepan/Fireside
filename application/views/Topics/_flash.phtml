@@ -1,0 +1,5 @@
+<?php if (!defined('FARI')) die();
+
+foreach (flash() as $flash) {
+    echo "<div id='flash' class='{$flash['key']}'><h2>{$flash['text']}</h2></div>";
+}
