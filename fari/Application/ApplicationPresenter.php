@@ -79,7 +79,7 @@ abstract class Fari_ApplicationPresenter {
         $this->bag = new Fari_Bag();
 
         // setup helpers and potentionally save some values to the newly initialized bag of values
-        $this->helpers = new Fari_ApplicationPresenterHelpers(&$this->bag);
+        $this->helpers = new Fari_ApplicationPresenterHelpers($this->bag);
 
         // startup filter is always applied first if defined
         if (method_exists($this->request->getPresenter(), filterStartup)) $this->filterStartup();
@@ -120,7 +120,7 @@ abstract class Fari_ApplicationPresenter {
     function __destruct() {
         if ($this->cache === TRUE) {
             // save cached data into a file &dump
-            $this->response->saveCache(&$this->bag->values);
+            $this->response->saveCache($this->bag->values);
         }
 
         // load filters as all actions have been executed already
@@ -150,7 +150,7 @@ abstract class Fari_ApplicationPresenter {
             $method = new Fari_ApplicationReflection($this, 'render' . ucfirst($action));
             
             // set parameters
-            if ($method->hasParameters()) $method->setParameters(&$parameters);
+            if ($method->hasParameters()) $method->setParameters($parameters);
             // call the render method
             $method->call($this);
         }
@@ -161,7 +161,7 @@ abstract class Fari_ApplicationPresenter {
         }
 
         // render file through a view
-        $this->response->renderView("{$presenter}/{$action}", &$this->bag->values);
+        $this->response->renderView("{$presenter}/{$action}", $this->bag->values);
 
         // we don't want any further code to be executed in the Presenter
         die();
@@ -189,7 +189,7 @@ abstract class Fari_ApplicationPresenter {
         }
 
         // render file through a view
-        $this->response->renderView("{$presenter}/{$action}", &$this->bag->values);
+        $this->response->renderView("{$presenter}/{$action}", $this->bag->values);
 
         // we don't want any further code to be executed in the Presenter
         die();

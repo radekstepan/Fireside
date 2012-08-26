@@ -63,7 +63,7 @@ final class Fari_ApplicationRouter {
         
 		// from variable to instance of an object
         $class = ucwords($route->presenter);
-		$presenter = @new $class(&$route);
+		$presenter = @new $class($route);
 		
 		// check that the Presenter object extends Fari_ApplicationPresenter
 		try { if (!$presenter instanceof Fari_ApplicationPresenter) {
@@ -91,9 +91,9 @@ final class Fari_ApplicationRouter {
             $method = new Fari_ApplicationReflection($route->presenter, $route->action);
         }
         // ...and optionally pass variable number of parametres
-        if ($method->hasParameters()) $method->setParameters(&$route->parameters);
+        if ($method->hasParameters()) $method->setParameters($route->parameters);
         // call the action (method) in the Presenter
-        $method->call(&$presenter);
+        $method->call($presenter);
  	}
 	
 }
