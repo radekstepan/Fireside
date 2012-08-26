@@ -117,7 +117,7 @@ class Table {
                 case 'findFirst':
                 case 'findLast':
                 case 'find':
-                    $this->relationships->iCanHazQuery(&$this, strtolower($matches[2]));
+                    $this->relationships->iCanHazQuery($this, strtolower($matches[2]));
                     // then call find as usual...
                     return $this->$matches[1]();
                     break;
@@ -195,7 +195,7 @@ class Table {
         } catch (Fari_Exception $exception) { $exception->fire(); }
 
         // any relationships?
-        $this->relationships->checkHazQuery(&$this);
+        $this->relationships->checkHazQuery($this);
 
         // method call
         $result = $this->{$this->method}();

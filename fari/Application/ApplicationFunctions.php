@@ -51,7 +51,9 @@ function __autoload($className) {
         // check that model class exists
         if (!file_exists($classFilePath)) {
             throw new Fari_Exception('Missing Class: ' . $classFilePath . '.');
-        } else include($classFilePath); // include file
+        } else {
+            include($classFilePath); // include file
+        }
     } catch (Fari_Exception $exception) { $exception->fire(); }
 }
 
