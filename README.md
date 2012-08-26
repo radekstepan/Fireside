@@ -2,6 +2,8 @@
 
 It's a mix of GMail, Google Wave and a chat app
 
+![image](https://github.com/radekstepan/Fireside/raw/master/example.png)
+
 Hate replying to long emails, constantly scrolling back and forth between the mail and a reply? Would you like to version your conversation in a chat and allow it to go offline?
 
 This quick app serves as a messenger program that creates nodes out of text you write. Each node can then be replied to. When you hit reply, your message is mailed through GMail and when the recipient visits your site, she can see the text of her original message and the sender's reply.
