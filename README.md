@@ -8,12 +8,16 @@ Hate replying to long emails, constantly scrolling back and forth between the ma
 
 This quick app serves as a messenger program that creates nodes out of text you write. Each node can then be replied to. When you hit reply, your message is mailed through GMail and when the recipient visits your site, she can see the text of her original message and the sender's reply.
 
-## Login Credentials
+## Getting started
+
+The app has been tested to work on PHP 5.4.4 on Mac OS X Lion through [MAMP](http://www.mamp.info/en/index.html).
+
+Point your browser to the directory with the app. You will be asked to authorize.
 
 The authentication and autorization relies on `Fari_AuthenticatorSimple` which uses `sha1()` to match passwords. By default, the default credentials are `admin:admin`. Use a tool such as [this](http://sha1-hash-online.waraxe.us/) to generate your own hash and modify the table `users` in the database file which is `db/database.php` by default and is of type SQLite3.
 
-## Debugging
+Edit `config/config.php` with SMTP server credentials to get emails in addition to the messages being exchanged on the site.
 
-The app has been tested to work on 5.4.4 on Mac OS X Lion through [MAMP](http://www.mamp.info/en/index.html).
+## Debugging
 
 Fari Framework automatically understands that you are in development mode, if you call the app from `127.0.0.1`. Do so to see a stacktrace of where an error has happened instead of seeing a placeholder error message.
